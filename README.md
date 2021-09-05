@@ -1,5 +1,8 @@
 # gin-web-template
-gin 二次封装 web 框架项目目录分层模板
+
+gin 二次封装 web 框架. 
+
+项目分层设计, 便以开发 web 项目.
 
 涉及 go 第三包有
 - gin web 框架
