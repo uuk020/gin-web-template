@@ -7,6 +7,8 @@ type ServerConfig struct {
 	MySql       MysqlConfig `mapstructure:"mysql"`
 	Redis       RedisConfig `mapstructure:"redis"`
 	LogsAddress string      `mapstructure:"logs_address"`
+	Timezone    string      `mapstructure:"timezone"`
+	Lang        string      `mapstructure:"lang"`
 }
 
 // MysqlConfig mysql 配置结构体

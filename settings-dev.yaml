@@ -2,7 +2,12 @@
 name: "gin-web"
 # web 应用端口
 port: 8080
+# 日志
 logs_address: "./logs/"
+# 时区
+timezone: "Asia/Shanghai"
+# 语言
+lang: "zh-cn"
 
 # mysql 相关配置
 mysql:
