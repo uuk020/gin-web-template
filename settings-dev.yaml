@@ -15,7 +15,7 @@ mysql:
   # mysql 密码
   password: "xxxxxx"
   # 数据库名称
-  db_name: "test"
+  database: "test"
 
 # redis 相关配置
 redis:
