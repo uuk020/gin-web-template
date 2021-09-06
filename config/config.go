@@ -15,7 +15,7 @@ type MysqlConfig struct {
 	Port     int    `mapstructure:"port"`
 	Name     string `mapstructure:"name"`
 	Password string `mapstructure:"password"`
-	database string `mapstructure:"database"`
+	Database string `mapstructure:"database"`
 }
 
 // RedisConfig redis 配置结构体
