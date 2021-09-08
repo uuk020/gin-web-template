@@ -1,4 +1,4 @@
-package global
+package utils
 
 import (
 	"github.com/uuk020/gin-web-template/config"
@@ -10,4 +10,6 @@ var (
 	Settings config.ServerConfig
 	// Lg 日志读取器
 	Lg *zap.Logger
+	// RouterGroup 路由规则
+	RouterGroup map[string][]*Route
 )

@@ -2,11 +2,8 @@ package main
 
 import (
 	"fmt"
-	"github.com/gin-gonic/gin"
-	"github.com/uuk020/gin-web-template/app/middlewares"
-	"github.com/uuk020/gin-web-template/global"
 	"github.com/uuk020/gin-web-template/initialize"
-	"net/http"
+	"github.com/uuk020/gin-web-template/utils"
 )
 
 func main() {
@@ -14,12 +11,10 @@ func main() {
 	initialize.InitConfig()
 	// 初始化日志
 	initialize.InitLogger()
-	r := gin.Default()
-	r.Use(middlewares.HttpRequestLogger(), middlewares.ServerDowntimeLogger(true))
-	r.GET("/ping", func(context *gin.Context) {
-		context.JSON(http.StatusOK, gin.H{
-			"message": "pong",
-		})
-	})
-	r.Run(fmt.Sprintf(":%d", global.Settings.Port))
+	// 初始化路由并且启动 gin 服务
+	r := initialize.InitRouter()
+	err := r.Run(fmt.Sprintf(":%d", utils.Settings.Port))
+	if err != nil {
+		panic("gin 服务运行失败: " + err.Error())
+	}
 }
