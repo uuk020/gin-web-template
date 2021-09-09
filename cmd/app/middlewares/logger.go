@@ -2,7 +2,7 @@ package middlewares
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/uuk020/gin-web-template/utils"
+	"github.com/uuk020/gin-web-template/cmd/app/utils"
 	"go.uber.org/zap"
 	"net"
 	"net/http"
@@ -22,17 +22,6 @@ func HttpRequestLogger() gin.HandlerFunc {
 		cost := time.Since(start)
 		if context.Writer.Status() != http.StatusOK {
 			zap.L().Error(path,
-				zap.Int("status", context.Writer.Status()),
-				zap.String("method", context.Request.Method),
-				zap.String("path", path),
-				zap.String("query", query),
-				zap.String("ip", context.ClientIP()),
-				zap.String("user-agent", context.Request.UserAgent()),
-				zap.String("errors", context.Errors.ByType(gin.ErrorTypePrivate).String()),
-				zap.Duration("cost", cost),
-			)
-		} else {
-			zap.L().Info(path,
 				zap.Int("status", context.Writer.Status()),
 				zap.String("method", context.Request.Method),
 				zap.String("path", path),

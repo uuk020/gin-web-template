@@ -2,19 +2,19 @@ package initialize
 
 import (
 	"github.com/spf13/viper"
-	"github.com/uuk020/gin-web-template/config"
-	"github.com/uuk020/gin-web-template/utils"
+	"github.com/uuk020/gin-web-template/cmd/app/utils"
+	"github.com/uuk020/gin-web-template/configs"
 	"log"
 )
 
-// InitConfig 初始化配置
-func InitConfig() {
+// Config 初始化配置
+func Config() {
 	v := viper.New()
-	v.SetConfigFile("./settings.yaml")
+	v.SetConfigFile("../settings.yaml")
 	if err := v.ReadInConfig(); err != nil {
 		panic(err)
 	}
-	serverConfig := config.ServerConfig{}
+	serverConfig := configs.ServerConfig{}
 	if err := v.Unmarshal(&serverConfig); err != nil {
 		panic(err)
 	}

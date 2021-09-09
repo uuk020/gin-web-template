@@ -2,14 +2,14 @@ package initialize
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/uuk020/gin-web-template/app/middlewares"
-	"github.com/uuk020/gin-web-template/router"
-	"github.com/uuk020/gin-web-template/utils"
+	"github.com/uuk020/gin-web-template/cmd/app/middlewares"
+	"github.com/uuk020/gin-web-template/cmd/app/router"
+	"github.com/uuk020/gin-web-template/cmd/app/utils"
 	"net/http"
 )
 
-// InitRouter 初始化路由
-func InitRouter() *gin.Engine {
+// Router 初始化路由
+func Router() *gin.Engine {
 	// 注册路由定义
 	router.App()
 	// 启动 gin 服务
@@ -18,6 +18,7 @@ func InitRouter() *gin.Engine {
 	for group, routes := range utils.RouterGroup {
 		groupRouter := r.Group(group)
 		for _, route := range routes {
+			// 是文件路由构建文件路由
 			if route.GetFilePath() != "" {
 				switch route.GetMethod() {
 				case "Static":
@@ -29,9 +30,17 @@ func InitRouter() *gin.Engine {
 				}
 			} else {
 				if route.GetMethod() == "Any" {
-					groupRouter.Any(route.GetURL(), route.GetHandlerFunc())
+					if route.GetModuleMiddleware() == nil {
+						groupRouter.Any(route.GetURL(), route.GetHandlerFunc())
+					} else {
+						groupRouter.Any(route.GetURL(), route.ExecHandler()...)
+					}
 				} else {
-					groupRouter.Handle(route.GetMethod(), route.GetURL(), route.GetHandlerFunc())
+					if route.GetModuleMiddleware() == nil {
+						groupRouter.Handle(route.GetMethod(), route.GetURL(), route.GetHandlerFunc())
+					} else {
+						groupRouter.Handle(route.GetMethod(), route.GetURL(), route.ExecHandler()...)
+					}
 				}
 			}
 		}

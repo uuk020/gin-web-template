@@ -1,4 +1,4 @@
-package config
+package configs
 
 // ServerConfig web 服务相关配置结构体
 type ServerConfig struct {
