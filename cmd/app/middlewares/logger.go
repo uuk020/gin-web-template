@@ -2,7 +2,6 @@ package middlewares
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/uuk020/gin-web-template/cmd/app/utils"
 	"go.uber.org/zap"
 	"net"
 	"net/http"
@@ -50,7 +49,7 @@ func ServerDowntimeLogger(stack bool) gin.HandlerFunc {
 				}
 				httpRequest, _ := httputil.DumpRequest(context.Request, false)
 				if brokenPipe {
-					utils.Lg.Error(context.Request.URL.Path, zap.Any("error", err), zap.String("request",
+					zap.L().Error(context.Request.URL.Path, zap.Any("error", err), zap.String("request",
 						string(httpRequest)))
 					_ = context.Error(err.(error))
 					context.Abort()

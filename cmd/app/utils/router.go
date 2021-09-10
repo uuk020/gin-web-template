@@ -33,27 +33,16 @@ func (r *Route) GetMethod() string {
 	return r.method
 }
 
-// GetModuleMiddleware 获取模块中间件
-func (r *Route) GetModuleMiddleware() []gin.HandlerFunc {
-	return r.handler.middlewares
-}
-
 // ExecHandler 执行模型中间件和 handlerFunc
 func (r *Route) ExecHandler() []gin.HandlerFunc {
-	if r.handler.middlewares == nil {
-		return nil
-	}
 	temp := make([]gin.HandlerFunc, 0)
-	for _, middleware := range r.handler.middlewares {
-		temp = append(temp, middleware)
+	if len(r.handler.middlewares) > 0 {
+		for _, middleware := range r.handler.middlewares {
+			temp = append(temp, middleware)
+		}
 	}
-	temp = append(temp, r.GetHandlerFunc())
+	temp = append(temp, r.handler.handlerFunc)
 	return temp
-}
-
-// GetHandlerFunc 没有模块中间件调用获取 HandlerFunc 字段
-func (r *Route) GetHandlerFunc() gin.HandlerFunc {
-	return r.handler.handlerFunc
 }
 
 // GetFilePath 获取 filePath 字段

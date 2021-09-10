@@ -14,6 +14,8 @@ func Router() *gin.Engine {
 	router.App()
 	// 启动 gin 服务
 	r := gin.Default()
+	// 加载全局中间件
+	r.Use(middlewares.HttpRequestLogger(), middlewares.ServerDowntimeLogger(true))
 	// 解析路由定义
 	for group, routes := range utils.RouterGroup {
 		groupRouter := r.Group(group)
@@ -30,22 +32,12 @@ func Router() *gin.Engine {
 				}
 			} else {
 				if route.GetMethod() == "Any" {
-					if route.GetModuleMiddleware() == nil {
-						groupRouter.Any(route.GetURL(), route.GetHandlerFunc())
-					} else {
-						groupRouter.Any(route.GetURL(), route.ExecHandler()...)
-					}
+					groupRouter.Any(route.GetURL(), route.ExecHandler()...)
 				} else {
-					if route.GetModuleMiddleware() == nil {
-						groupRouter.Handle(route.GetMethod(), route.GetURL(), route.GetHandlerFunc())
-					} else {
-						groupRouter.Handle(route.GetMethod(), route.GetURL(), route.ExecHandler()...)
-					}
+					groupRouter.Handle(route.GetMethod(), route.GetURL(), route.ExecHandler()...)
 				}
 			}
 		}
 	}
-	// 加载全局中间件
-	r.Use(middlewares.HttpRequestLogger(), middlewares.ServerDowntimeLogger(true))
 	return r
 }
