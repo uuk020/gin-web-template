@@ -15,5 +15,4 @@ func Logger()  {
 	}
 	logg, _ := cfg.Build()
 	zap.ReplaceGlobals(logg)
-	utils2.Lg = logg
 }

@@ -28,5 +28,5 @@ redis:
   host: "127.0.0.1"
   # redis 端口
   port: 6379
-  # redis 密码
+  # redis 密码 没有密码则填空
   password: "xxxxxx"

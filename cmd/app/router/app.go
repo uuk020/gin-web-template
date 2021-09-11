@@ -8,6 +8,7 @@ import (
 )
 // App 路由定义文件
 func App() {
+	// 示例代码
 	utils.AddRoute("/", utils.NewRouter("/hello", "GET", utils.NewRouteHandle(func(context *gin.Context) {
 		context.String(http.StatusOK, "hello world")
 	})))

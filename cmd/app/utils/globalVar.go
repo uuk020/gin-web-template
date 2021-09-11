@@ -1,15 +1,18 @@
 package utils
 
 import (
+	"github.com/go-redis/redis"
 	"github.com/uuk020/gin-web-template/configs"
-	"go.uber.org/zap"
+	"gorm.io/gorm"
 )
 // 全局变量
 var (
 	// Settings 系统配置
 	Settings configs.ServerConfig
-	// Lg 日志读取器
-	Lg *zap.Logger
 	// RouterGroup 路由规则
 	RouterGroup map[string][]*Route
+	// MysqlDataBase 全局变量
+	MysqlDataBase *gorm.DB
+	// RedisDataBase 全局变量
+	RedisDataBase *redis.Client
 )
