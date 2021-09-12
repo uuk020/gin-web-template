@@ -35,13 +35,14 @@ func (r *Route) GetMethod() string {
 
 // ExecHandler 执行模型中间件和 handlerFunc
 func (r *Route) ExecHandler() []gin.HandlerFunc {
-	temp := make([]gin.HandlerFunc, 0)
-	if len(r.handler.middlewares) > 0 {
-		for _, middleware := range r.handler.middlewares {
-			temp = append(temp, middleware)
+	middlewareNum := len(r.handler.middlewares)
+	temp := make([]gin.HandlerFunc, middlewareNum + 1)
+	if middlewareNum > 0 {
+		for index, middleware := range r.handler.middlewares {
+			temp[index] = middleware
 		}
 	}
-	temp = append(temp, r.handler.handlerFunc)
+	temp[middlewareNum] = r.handler.handlerFunc
 	return temp
 }
 
