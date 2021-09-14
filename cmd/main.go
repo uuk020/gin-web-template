@@ -14,7 +14,7 @@ func main() {
 	initialize.Logger()
 	// 初始化数据库相关
 	initialize.InitMysql()
-	//initialize.InitRedis()
+	initialize.InitRedis()
 	// 初始化路由
 	router.App()
 	// 启动 gin 服务

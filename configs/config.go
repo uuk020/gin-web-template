@@ -9,6 +9,7 @@ type ServerConfig struct {
 	LogsAddress string      `mapstructure:"logs_address"`
 	Timezone    string      `mapstructure:"timezone"`
 	Lang        string      `mapstructure:"lang"`
+	JWTKey      JWTConfig   `mapstructure:"jwt"`
 }
 
 // MysqlConfig mysql 配置结构体
@@ -25,4 +26,9 @@ type RedisConfig struct {
 	Host     string `mapstructure:"host"`
 	Port     int    `mapstructure:"port"`
 	Password string `mapstructure:"password"`
+}
+
+// JWTConfig jwt 配置
+type JWTConfig struct {
+	SigningKey string `mapstructure:"key" json:"key"`
 }

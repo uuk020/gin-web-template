@@ -16,3 +16,8 @@ var (
 	// RedisDataBase 全局变量
 	RedisDataBase *redis.Client
 )
+
+const (
+	// StaticResources 静态资源路径, 相对 main.go 文件所在的
+	StaticResources = "./app/static/"
+)

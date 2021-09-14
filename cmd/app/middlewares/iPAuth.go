@@ -1,7 +1,6 @@
 package middlewares
 
 import (
-	"fmt"
 	"github.com/gin-gonic/gin"
 	"net/http"
 )
@@ -20,7 +19,6 @@ func IPAuth() gin.HandlerFunc {
 				break
 			}
 		}
-		fmt.Println(flag)
 		if !flag {
 			context.String(http.StatusForbidden, "%s, not in ip list", clientIP)
 			context.Abort()
