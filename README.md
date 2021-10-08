@@ -49,14 +49,15 @@
 ```
 
 ### 使用说明
+- git clone 此项目, 修改 go.mod 的包名称改成你的
 - setting-dev.yaml 重命名为 setting.yaml
-- 路由定义统一在 cmd/app/router/app.go 编写, 通过 ```utils.AddRoute``` 定义路由, 具体使用可看示例
-- 
+- 路由定义统一在 internal/app/router/app.go 编写, 通过 ```utils.AddRoute``` 定义路由, 具体使用可看示例
 
 ### 参考
 * [Standard Go Project Layout](https://github.com/golang-standards/project-layout/blob/master/README_zh-CN.md)
 * [10篇带你手摸手封装gin框架](https://juejin.cn/column/6968662583138238478)
 * [admin-go](https://github.com/basefas/admin-go)
+* [go-clean-template](https://github.com/evrone/go-clean-template)
 * [gin 框架文档](https://github.com/gin-gonic/gin#benchmarks)
 * [gorm 文档](https://gorm.io/zh_CN/)
 
