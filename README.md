@@ -19,14 +19,6 @@
 ```
 项目部署目录（或者子目录）
 ├─cmd                   程序目录
-│  │─app                应用   
-│  │ ├─controller       控制器目录
-│  │ ├─middleware       中间件目录
-│  │ ├─models           模型目录
-│  │ ├─router           路由目录
-│  │ ├─service          服务层目录
-│  │ ├─static           资源目录
-│  │ ├─utils            应用核心目录
 │  └─main.go            应用主入口
 │
 ├─configs               配置目录
@@ -39,6 +31,14 @@
 │  ├─router.go          路由初始化
 │
 ├─internal              私有应用程序和库代码
+│  │─app                应用   
+│  │ ├─controller       控制器目录
+│  │ ├─middleware       中间件目录
+│  │ ├─models           模型目录
+│  │ ├─router           路由目录
+│  │ ├─service          服务层目录
+│  │ ├─static           资源目录
+│  │ ├─utils            应用核心目录
 │
 ├─logs                  错误日志
 ├─go.mod                Go module相关

@@ -2,8 +2,8 @@ package initialize
 
 import (
 	"github.com/spf13/viper"
-	"github.com/uuk020/gin-web-template/cmd/app/utils"
 	"github.com/uuk020/gin-web-template/configs"
+	"github.com/uuk020/gin-web-template/internal/app/utils"
 	"log"
 )
 

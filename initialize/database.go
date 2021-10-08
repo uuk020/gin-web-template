@@ -3,7 +3,7 @@ package initialize
 import (
 	"fmt"
 	"github.com/go-redis/redis"
-	"github.com/uuk020/gin-web-template/cmd/app/utils"
+	"github.com/uuk020/gin-web-template/internal/app/utils"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )

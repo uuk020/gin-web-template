@@ -2,7 +2,7 @@ package initialize
 
 import (
 	"fmt"
-	utils2 "github.com/uuk020/gin-web-template/cmd/app/utils"
+	utils2 "github.com/uuk020/gin-web-template/internal/app/utils"
 	"go.uber.org/zap"
 )
 

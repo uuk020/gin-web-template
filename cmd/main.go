@@ -1,10 +1,10 @@
 package main
 
 import (
-	"github.com/uuk020/gin-web-template/cmd/app/middlewares"
-	"github.com/uuk020/gin-web-template/cmd/app/router"
-	"github.com/uuk020/gin-web-template/cmd/app/utils"
 	"github.com/uuk020/gin-web-template/initialize"
+	"github.com/uuk020/gin-web-template/internal/app/middlewares"
+	"github.com/uuk020/gin-web-template/internal/app/router"
+	"github.com/uuk020/gin-web-template/internal/app/utils"
 )
 
 func main() {

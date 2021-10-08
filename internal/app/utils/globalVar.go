@@ -19,5 +19,5 @@ var (
 
 const (
 	// StaticResources 静态资源路径, 相对 main.go 文件所在的
-	StaticResources = "./app/static/"
+	StaticResources = "../internal/app/static/"
 )

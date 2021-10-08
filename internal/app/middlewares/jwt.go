@@ -3,7 +3,7 @@ package middlewares
 import (
 
 	"github.com/gin-gonic/gin"
-	"github.com/uuk020/gin-web-template/cmd/app/utils"
+	"github.com/uuk020/gin-web-template/internal/app/utils"
 	"net/http"
 )
 
