@@ -2,8 +2,9 @@ package utils
 
 import (
 	"errors"
-	"github.com/dgrijalva/jwt-go"
 	"time"
+
+	"github.com/dgrijalva/jwt-go"
 )
 
 type CustomClaims struct {
@@ -18,10 +19,10 @@ type JWT struct {
 }
 
 var (
-	ErrTokenExpired     = errors.New("token is expired")
-	ErrTokenNotValidYet = errors.New("token not active yet")
-	ErrTokenMalformed   = errors.New("that's not even a token")
-	ErrTokenInvalid     = errors.New("couldn't handle this token")
+	ErrTokenExpired     = errors.New("token 过期")
+	ErrTokenNotValidYet = errors.New("token 未生效")
+	ErrTokenMalformed   = errors.New("这不是一个 token")
+	ErrTokenInvalid     = errors.New("无法处理此 token")
 )
 
 func NewJWT() *JWT {
@@ -34,13 +35,13 @@ func NewJWT() *JWT {
 func CreateToken(id uint, nickName string, role uint) (string, error) {
 	j := NewJWT()
 	cliams := CustomClaims{
-		ID: id,
-		NickName: nickName,
+		ID:          id,
+		NickName:    nickName,
 		AuthorityId: role,
 		StandardClaims: jwt.StandardClaims{
 			NotBefore: time.Now().Unix(),
 			ExpiresAt: time.Now().Unix() + (30 * 60),
-			Issuer: "gin",
+			Issuer:    "gin",
 		},
 	}
 	return j.token(cliams)
