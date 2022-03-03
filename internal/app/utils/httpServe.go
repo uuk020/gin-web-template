@@ -3,13 +3,15 @@ package utils
 import (
 	"context"
 	"fmt"
-	"github.com/gin-gonic/gin"
 	"log"
 	"net/http"
 	"os/signal"
 	"syscall"
 	"time"
+
+	"github.com/gin-gonic/gin"
 )
+
 // StartGinServ 启动 gin 服务
 func StartGinServ(isDefault bool, middleware ...gin.HandlerFunc) {
 	var r *gin.Engine
@@ -71,12 +73,12 @@ func gracefulShutdown(r *gin.Engine) {
 	<-ctx.Done()
 
 	stop()
-	log.Println("shutting down gracefully, press Ctrl+C again to force")
+	log.Println("正常关闭服务, 请按 Ctrl+C 强制退出")
 
-	ctx1, cancel := context.WithTimeout(context.Background(), 5 * time.Second)
+	ctx1, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 	defer cancel()
 	if err := srv.Shutdown(ctx1); err != nil {
-		log.Fatal("Server forced to shutdown: ", err)
+		log.Fatal("服务已被强制关闭: ", err)
 	}
-	log.Println("Server exiting")
+	log.Println("服务已退出")
 }
